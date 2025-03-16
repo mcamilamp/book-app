@@ -15,12 +15,14 @@ const Main = () => {
           <div className="search">
             <input type="text" placeholder="Search for books" />
             <button>
-              <i class="fa-solid fa-magnifying-glass"></i>
+              <i class="fas fa-search"></i>
             </button>
           </div>
           <img src="./images/bg2.png" alt="img" />
         </div>
       </div>
+
+      <div className="container"></div>
     </>
   );
 };

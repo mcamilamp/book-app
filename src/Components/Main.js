@@ -3,15 +3,17 @@ import Card from "./Card";
 import axios from "axios";
 const Main = () => {
   const [search, setSearch] = useState("");
+  const [bookData, setData] = useState([]);
   const searchBook = (evt) => {
     if (evt.key === "Enter") {
       axios
         .get(
           "https://www.googleapis.com/books/v1/volumes?q=" +
             search +
-            "&key=AIzaSyDMAVIOuAMeJYtujcb2jTXBxzuUPv8dtqM"
+            "&key=AIzaSyDMAVIOuAMeJYtujcb2jTXBxzuUPv8dtqM" +
+            "&maxResults=20"
         )
-        .then((res) => console.log(res))
+        .then((res) => setData(res.data.items))
         .catch((err) => console.log(err));
     }
   };
@@ -41,16 +43,7 @@ const Main = () => {
           <img src="/images/bg2.png" alt="nose" />
         </div>
       </div>
-      <div className="container">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </div>
+      <div className="container">{<Card book={bookData} />}</div>
     </>
   );
 };

@@ -1,30 +1,31 @@
 import react from "react";
 const Modal = ({ show, item, onClose }) => {
+  if (!show) {
+    return null;
+  }
+  let thumbnail =
+    item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.smallThumbnail;
   return (
     <div className="overlay">
       <div className="overlay-inner">
         <button className="close" onClick={onClose}></button>
         <div className="inner-box">
-          <img src="/images/book.png" alt="book" />
+          <img src={thumbnail} alt="book" />
           <div className="info">
-            <h1>
-              React by Example - Building Modern web applications with ReactJS
-            </h1>
-            <h3>Prathamesh Sonpatki</h3>
+            <h1>{item.volumeInfo.title}</h1>
+            <h3>{item.volumeInfo.authors}</h3>
 
             <h4>
-              Packt Publishing Ltd<span>2016-04-11</span>
+              {item.volumeInfo.publisher}
+              <span>{item.volumeInfo.publishedDate}</span>
             </h4>
             <br />
-            <a href="#">
+            <a href={item.volumeInfo.previewLink}>
               <button>More</button>
             </a>
           </div>
         </div>
-        <h4 className="description">
-          Knoqqqqqqqqqqqqqqqqqqqqqqqqqqqq qqqqqqqe qqqqqs qq wwq aaaaaaaak plwp
-          qlswksla lllm aaaaaa
-        </h4>
+        <h4 className="description">{item.volumeInfo.description}</h4>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import Modal from "./Modal";
 
 const Card = ({ book }) => {
   console.log(book);
@@ -20,6 +21,7 @@ const Card = ({ book }) => {
                   <p className="amount">&#8377; {amount}</p>
                 </div>
               </div>
+              <Modal />
             </>
           );
         }
